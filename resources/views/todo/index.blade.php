@@ -12,10 +12,12 @@
                 <h2 class="mb-2 ml-2">Järjestelmässä olevat todo-merkinnät</h2>
                 <a href="{{ route('todo.create') }}" class="m-1 p-1 bg-blue-400 text-white rounded hover:bg-blue-200">Uusi todo</a>
                 <!-- "btn btn-primary mb-3" style="background-color: red;" -->
-                <table class="ml-3">
+                <table class="bg-gray-100 ml-3">
                     <thead>
-                        <tr>
+                        <tr class="border-2 border-red-600">
+                            <td>Komennot</td>
                             <td>nimi</td>
+                            <td>Päivämäärä</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,13 +39,13 @@
 
                             </td>
                             <td> 
-                                {{ $todo->id}} <!-- vaan tän tarvii -->
+                                {{ $todo->id}}
                             </td>
                             <td>
                                 {{ $todo->nimi}}
                             </td>
                             <td>
-                                {{ $todo->created_at}}
+                                {{ Carbon\Carbon::parse($todo->created_at)->format('DdDdD.MmMmM.YyYyY') }}
                             </td>
                         </tr>
                         @endforeach

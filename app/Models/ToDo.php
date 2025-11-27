@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class ToDo extends Model
 {
     //
-    protected $fillable = ['nimi'];
+    protected $fillable = ['nimi', 'tehtavan_kuvaus', 'status', 'maarapaiva', 'kiireellisyys'];
 }

@@ -35,9 +35,14 @@ class ToDoController extends Controller
         //
         $request->validate([
             'nimi' => 'required|string|max:10',
+            'tehtavan_kuvaus' => 'nullable|string|max:1000',
+            'status' => 'required|in:idea,toteutetaan,aloitettu,tehty 50%,tehty 70%,valmis,hylataan ehdotus,tehdaan seuraavaan versioon',
+            'maarapaiva' => 'required',
+            'kiireellisyys' => 'required',
         ]);
 
-        ToDo::create($request->all());
+        ToDo::create($request->only(['nimi', 'tehtavan_kuvaus', 'status', 'maarapaiva', 'kiireellisyys']));
+        
         return redirect()->route('todo.index')->with('success', 'Lisäys onnistui');
     }
 
@@ -65,13 +70,14 @@ class ToDoController extends Controller
      */
     public function update(Request $request, ToDo $todo)
     {
-        //
+         $request->validate([
+        'nimi' => 'required|string|max:10',
+        'tehtavan_kuvaus' => 'nullable|string|max:1000',
+        'status' => 'required|in:idea,toteutetaan,aloitettu,tehty 50%,tehty 70%,valmis,hylätään ehdotus,tehdään seuraavaan versioon',
+    ]);
 
-        $request->validate([
-            'nimi' => 'required|string|max:10',
-        ]);
+        $todo->update($request->only(['nimi', 'tehtavan_kuvaus', 'status']));
 
-        $todo->update($request->all());
         return redirect()->route('todo.index')->with('success', 'Päivitys onnistui');
     }
 

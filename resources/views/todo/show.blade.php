@@ -20,6 +20,10 @@
                         <tr>
                             <td>{{ $todo->id }}</td>
                             <td>{{ $todo->nimi }}</td>
+                            <td>{{ $todo->kuvaus }}</td>
+                            <td>{{ $todo->status }}</td>
+                            <td>{{ $todo->maarapaiva }}</td>
+                            <td>{{ $todo->kiireellisyys }}</td>
                         </tr>
                         
                     </tbody>

@@ -13,8 +13,25 @@ return new class extends Migration
     {
         Schema::create('to_dos', function (Blueprint $table) {
             $table->id();
-            $table->string('nimi');
-            $table->enum('status', ['idea', 'aloitettu'])->default('idea');
+            $table->text('nimi');
+            
+            $table->text('tehtavan_kuvaus')->nullable();
+
+            $table->enum('status', [
+                'idea',
+                'toteutetaan',
+                'aloitettu',
+                'tehty 50%',
+                'tehty 70%',
+                'valmis',
+                'hylataan ehdotus',
+                'tehdaan seuraavaan versioon'
+            ])->default('idea');
+
+            $table->date('maarapaiva')->nullable();
+
+            $table->text('kiireellisyys')->nullable();
+
             $table->timestamps();
         });
     }
@@ -24,6 +41,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('to_dos');
+        Schema::table('to_dos', function (Blueprint $table) {
+        $table->dropColumn('tehtavan_kuvaus');
+        $table->dropColumn('status');
+    });
     }
 };
