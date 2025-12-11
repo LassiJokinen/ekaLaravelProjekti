@@ -52,7 +52,7 @@
 
                     <div class="md:flex md:items-center mb-6">
                         <div class="md:w-1/3">
-                            <x-label for="maarapaiva" value="{{ __('Maarapaiva') }}" />
+                            <x-label for="maarapaiva" value="{{ __('maarapaiva') }}" />
                         </div>   
                         <div class ="md:w-1/3">
                             <x-input id="maarapaiva" class="block mt-1 w-full" type="date" name="maarapaiva" value="" required autofocus />
@@ -80,10 +80,6 @@
                             <button type="submit" class="btn btn-success">Lisää uusi todo</button>
                         </div>
                     </div>
-
-                    
-
-                    
 
                 </form>
             </div>

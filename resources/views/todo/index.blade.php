@@ -11,7 +11,6 @@
                 
                 <h2 class="mb-2 ml-2">Järjestelmässä olevat todo-merkinnät</h2>
                 <a href="{{ route('todo.create') }}" class="m-1 p-1 bg-blue-400 text-white rounded hover:bg-blue-200">Uusi todo</a>
-                <!-- "btn btn-primary mb-3" style="background-color: red;" -->
                 <table class="bg-gray-100 ml-3">
                     <thead>
                         <tr class="border-2 border-red-600">
@@ -45,7 +44,7 @@
                                 {{ $todo->nimi}}
                             </td>
                             <td>
-                                {{ Carbon\Carbon::parse($todo->created_at)->format('DdDdD.MmMmM.YyYyY') }}
+                                {{ Carbon\Carbon::parse($todo->created_at)->format('d.m.Y') }}
                             </td>
                         </tr>
                         @endforeach

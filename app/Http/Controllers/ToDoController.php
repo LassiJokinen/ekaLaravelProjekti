@@ -70,7 +70,7 @@ class ToDoController extends Controller
      */
     public function update(Request $request, ToDo $todo)
     {
-         $request->validate([
+        $request->validate([
         'nimi' => 'required|string|max:10',
         'tehtavan_kuvaus' => 'nullable|string|max:1000',
         'status' => 'required|in:idea,toteutetaan,aloitettu,tehty 50%,tehty 70%,valmis,hylätään ehdotus,tehdään seuraavaan versioon',
